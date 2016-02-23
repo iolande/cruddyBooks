@@ -1,0 +1,7 @@
+<template>
+  <h1>Cruddy books</h1>
+  <div class="row">
+    <compose view-model="./childViews/bookForm" class="col-md-6 col-xs-6" add-book.call="addBook()"></compose>
+    <compose view-model="./childViews/bookList" class="col-md-6 col-xs-6" model.bind="this"></compose>
+  </div>
+</template>

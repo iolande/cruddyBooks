@@ -1,0 +1,14 @@
+<template>
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">List books</h3>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <li repeat.for="book of bookList">${book.title}</li>
+      </ul>
+      <button click.trigger="getBooks()" class="btn btn-secondary">Get books</button>
+      <button click.trigger="fetchBooks()" class="btn btn-primary">Fetch books</button>
+    </div>
+  </section>
+</template>

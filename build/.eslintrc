@@ -1,0 +1,10 @@
+{
+  "ecmaFeatures": {
+      "modules": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "no-var": 0,
+    "no-console": 0
+  }
+}

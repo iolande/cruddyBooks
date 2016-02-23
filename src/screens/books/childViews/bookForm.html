@@ -1,0 +1,21 @@
+<template>
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add book</h3>
+    </div>
+    <div class="panel-body">
+      <form submit.delegate="addBook(formValues)">
+        <text-input field-data.bind="titleData" field-value.two-way="formValues.title"></text-input>
+        <text-input field-data.bind="authorData" field-value.two-way="formValues.author"></text-input>
+        <text-input field-data.bind="genreData" field-value.two-way="formValues.genre"></text-input>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked.bind="formValues.read"> Read
+          </label>
+        </div>
+        <button class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </section>
+</template>
