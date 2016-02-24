@@ -1,10 +1,12 @@
-// import {bindable} from 'aurelia-framework';
+import {Book} from '../../../models/book';
 
 export class BookForm {
   constructor() {
     this.titleData = { name: 'title', prettyName: 'Title', maxLength: 50 };
     this.authorData = { name: 'author', prettyName: 'Author', maxLength: 50 };
     this.genreData = { name: 'genre', prettyName: 'Genre', maxLength: 50 };
+
+    this.book = new Book();
 
     // This works for sending back up the chain but now I'm sending back the full bound object...
     // What's the point in binding them if I do this???

@@ -1,7 +1,11 @@
 export function configure(aurelia) {
   aurelia.globalResources('./item-list/item-list');
   aurelia.globalResources('./navigation-bar/navigation-bar');
-  aurelia.globalResources('./search/panel');
+  aurelia.globalResources('./panel/panel');
+  aurelia.globalResources('./panel/panel-heading');
+  aurelia.globalResources('./panel/panel-body');
+  aurelia.globalResources('./panel/panel-footer');
   aurelia.globalResources('./search/search');
-  aurelia.globalResources('./text-input/text-input');
+  aurelia.globalResources('./forms/text-input/text-input');
+  aurelia.globalResources('./forms/select/select');
 }

@@ -6,10 +6,12 @@ export class Book {
   id = '';
 
   constructor(data) {
-    this.author = data.author;
-    this.genre = data.genre;
-    this.read = data.read;
-    this.title = data.title;
-    this.id = data.id;
+    if (!!data) {
+      this.author = data.author;
+      this.genre = data.genre;
+      this.read = data.read;
+      this.title = data.title;
+      this.id = data.id;
+    }
   }
 }

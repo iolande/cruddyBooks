@@ -1,0 +1,6 @@
+<template>
+  <label for="${fieldData.name}">${fieldData.prettyName}</label>
+  <select id="${fieldData.name}">
+    <option repeat.for="option of fieldData.options" value.bind="option.value">${option.description}</option>
+  </select>
+</template>

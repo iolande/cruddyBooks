@@ -4,7 +4,7 @@
       <h3 class="panel-title">Add book</h3>
     </div>
     <div class="panel-body">
-      <form submit.delegate="addBook(formValues)">
+      <form id="addBookForm" submit.delegate="addBook(formValues)">
         <text-input field-data.bind="titleData" field-value.two-way="formValues.title"></text-input>
         <text-input field-data.bind="authorData" field-value.two-way="formValues.author"></text-input>
         <text-input field-data.bind="genreData" field-value.two-way="formValues.genre"></text-input>
@@ -14,8 +14,10 @@
             <input type="checkbox" checked.bind="formValues.read"> Read
           </label>
         </div>
-        <button class="btn btn-primary">Submit</button>
       </form>
+    </div>
+    <div class="panel-footer">
+      <button class="btn btn-primary" form="addBookForm">Submit</button>
     </div>
   </section>
 </template>

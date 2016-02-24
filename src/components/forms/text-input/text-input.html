@@ -1,0 +1,6 @@
+<template>
+  <div class="form-group">
+    <label for="${fieldData.name}">${fieldData.prettyName}</label>
+    <input type="text" class="form-control" value.bind="fieldValue & updateTrigger:'blur'" id="${fieldData.name}" maxlength="${fieldData.maxLength}">
+  </div>
+</template>
