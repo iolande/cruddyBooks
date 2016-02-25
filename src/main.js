@@ -4,7 +4,8 @@ export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .developmentLogging()
-    .feature('components');
+    .feature('resources/components')
+    .feature('resources/composites');
 
   //Uncomment the line below to enable animation.
   //aurelia.use.plugin('aurelia-animator-css');
