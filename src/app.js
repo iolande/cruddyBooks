@@ -6,7 +6,6 @@ export class App {
       { route: 'reviews', name: 'reviews', moduleId: 'screens/reviews/reviews', nav: true, title: 'Reviews' },
       { route: 'demos', name: 'demos', moduleId: 'screens/demos/demo-router', nav: true, title: 'Demos' }
     ]);
-    router.baseUrl = '/';
     this.router = router;
   }
 }
