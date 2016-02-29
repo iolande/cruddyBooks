@@ -3,9 +3,9 @@
     <search-input name="searchTerm" pretty-name="Search by genre" value.two-way="searchTerm"></search-input>
     <button class="btn btn-primary pull-right" click.delegate="doSearchByGenre()">Search</button>
   </form>
-  <ul>
+  <ul class="list-unstyled">
     <li repeat.for="book of bookList">
-      <button type="button" click.delegate="selectBook()">${book.title}</button>
+      <button type="button" click.delegate="selectBook(book)" class="btn btn-link">${book.title}</button>
     </li>
   </ul>
 </template>

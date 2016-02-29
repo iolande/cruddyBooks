@@ -1,6 +1,10 @@
+import { bindable } from 'aurelia-framework';
+
 export class BookFields {
-  title = '';
-  author = '';
-  genre = '';
-  read = false;
+  @bindable book = {
+    title: '',
+    author: '',
+    genre: '',
+    read: false
+  };
 }
