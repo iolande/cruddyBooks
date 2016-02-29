@@ -20,6 +20,17 @@ export class BookService {
     });
   }
 
+  getBooksByGenre(genre) {
+    return this.httpClient.createRequest('books')
+        .asGet()
+        .withParams({
+          genre: genre
+        })
+      .send()
+      .then(response => JSON.parse(response && response.response))
+      .catch(this.serviceError);
+  }
+
   getBooks() {
     return this.httpClient.get('books')
       .then(response => JSON.parse(response && response.response))

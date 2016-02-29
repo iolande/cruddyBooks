@@ -1,7 +1,11 @@
 <template>
   <form class="clearfix" accept-charset="utf-8">
-    <search-input name="searchTerm" pretty-name="Book title" value.two-way="searchTerm"></search-input>
-    <button class="btn btn-primary pull-right">Search</button>
+    <search-input name="searchTerm" pretty-name="Search by genre" value.two-way="searchTerm"></search-input>
+    <button class="btn btn-primary pull-right" click.delegate="doSearchByGenre()">Search</button>
   </form>
-  <h3>Search result list</h3>
+  <ul>
+    <li repeat.for="book of bookList">
+      <button type="button" click.delegate="selectBook()">${book.title}</button>
+    </li>
+  </ul>
 </template>
