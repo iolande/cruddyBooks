@@ -180,6 +180,14 @@ div.au-stagger {
 panel,
 panel-heading,
 panel-body,
-panel-footer {
+panel-footer,
+navigation-bar,
+orig-text-input,
+search-input,
+select-input,
+text-input,
+item-list,
+book-fields,
+book-search {
   display: block;
 }

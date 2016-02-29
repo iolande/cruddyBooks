@@ -1,8 +1,7 @@
 export function configure(aurelia) {
-  aurelia.globalResources('./forms/search/search');
-  aurelia.globalResources('./forms/select/select');
+  aurelia.globalResources('./forms/search-input/search-input');
+  aurelia.globalResources('./forms/select-input/select-input');
   aurelia.globalResources('./forms/text-input/text-input');
-
 
   aurelia.globalResources('./forms/orig-text-input/text-input');
 

@@ -1,6 +1,6 @@
 import {bindable} from 'aurelia-framework';
 
-export class Select {
+export class SelectInput {
   @bindable fieldData;
   @bindable fieldValue;
 }
