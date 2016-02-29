@@ -2,7 +2,25 @@
   <h2>Update user's book collection</h2>
   <p>Add a new one / update one that's already there etc.</p>
 
-  <p>Search form</p>
-  <p>Search results list</p>
-  <p>Book info form (pre-populated with info from search form if a selection was made)</p>
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Update book</h3>
+    </div>
+    <div class="panel-body">
+
+      <p>Search form</p>
+      <p>Search results list</p>
+
+      <form id="bookDetailsForm" submit.delegate="submitBookDetails(formValues)">
+        <book-fields></book-fields>
+      </form>
+    </div>
+    <div class="panel-footer">
+      <button class="btn btn-primary" form="bookDetailsForm">Submit</button>
+    </div>
+  </section>
 </template>
+
+
+
+

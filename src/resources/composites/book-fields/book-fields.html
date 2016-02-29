@@ -1,6 +1,14 @@
 <template>
   <fieldset>
     <legend>Book details</legend>
+    <text-input name="title" pretty-name="Title" max-length="50" value.two-way="title"></text-input>
+    <text-input name="author" pretty-name="Author" max-length="50" value.two-way="author"></text-input>
+    <text-input name="genre" pretty-name="Genre" max-length="50" value.two-way="genre"></text-input>
 
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" checked.bind="read"> Read
+      </label>
+    </div>
   </fieldset>
 </template>

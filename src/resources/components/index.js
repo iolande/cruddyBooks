@@ -3,6 +3,9 @@ export function configure(aurelia) {
   aurelia.globalResources('./forms/select/select');
   aurelia.globalResources('./forms/text-input/text-input');
 
+
+  aurelia.globalResources('./forms/orig-text-input/text-input');
+
   aurelia.globalResources('./item-list/item-list');
   aurelia.globalResources('./navigation-bar/navigation-bar');
 
