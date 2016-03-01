@@ -6,4 +6,8 @@ export class About {
   constructor(bookService) {
 
   }
+
+  saveAll() {
+    console.log('uber save');
+  }
 }
