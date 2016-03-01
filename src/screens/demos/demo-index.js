@@ -4,34 +4,58 @@ export class DemoIndex {
   // }
 
   canActivate() {
-    console.log('1. router lifecycle - canActivate');
+    console.group('1. canActivate');
+    console.log('router lifecycle');
+    console.groupEnd();
   }
 
   activate() {
-    console.log('2. router lifecycle - activate');
+    console.group('2. activate');
+    console.log('router lifecycle');
+    console.groupEnd();
   }
 
-  bind() {
-    console.log('3. viewmodel lifecycle - bind');
+  created(view) {
+    console.group('3. created');
+    console.log('viewmodel lifecycle');
+    console.log(view);
+    console.groupEnd();
+  }
+
+  bind(bindingcontext) {
+    console.group('4. bind');
+    console.log('viewmodel lifecycle');
+    console.log(bindingcontext);
+    console.groupEnd();
   }
 
   attached() {
-    console.log('4. viewmodel lifecycle - attached');
+    console.group('5. attached');
+    console.log('viewmodel lifecycle');
+    console.groupEnd();
   }
 
   canDeactivate() {
-    console.log('5. router lifecycle - canDeactivate');
+    console.group('6. canDeactivate');
+    console.log('router lifecycle');
+    console.groupEnd();
   }
 
   deactivate() {
-    console.log('6. router lifecycle - deactivate');
+    console.group('7. deactivate');
+    console.log('router lifecycle');
+    console.groupEnd();
   }
 
   detached() {
-    console.log('7. viewmodel lifecycle - detached');
+    console.group('8. detached');
+    console.log('viewmodel lifecycle');
+    console.groupEnd();
   }
 
   unbind() {
-    console.log('8. viewmodel lifecycle - unbind');
+    console.group('9. unbind');
+    console.log('viewmodel lifecycle');
+    console.groupEnd();
   }
 }
