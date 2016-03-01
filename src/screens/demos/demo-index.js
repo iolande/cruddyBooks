@@ -1,17 +1,27 @@
 export class DemoIndex {
-  // configureRouter() {
+  // configureRouter(config, router) {
   //   console.log('configureRouter');
   // }
 
-  canActivate() {
+  // https://www.danyow.net/inversion-of-control-with-aurelia-part-1/
+
+  canActivate(params, routeConfig, navigationInstruction) {
     console.group('1. canActivate');
     console.log('router lifecycle');
+    console.log('args: params, routeConfig, navigationInstruction');
+    console.log(params);
+    console.log(routeConfig);
+    console.log(navigationInstruction);
     console.groupEnd();
   }
 
-  activate() {
+  activate(params, routeConfig, navigationInstruction) {
     console.group('2. activate');
     console.log('router lifecycle');
+    console.log('args: params, routeConfig, navigationInstruction');
+    console.log(params);
+    console.log(routeConfig);
+    console.log(navigationInstruction);
     console.groupEnd();
   }
 
