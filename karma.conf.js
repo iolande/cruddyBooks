@@ -14,7 +14,7 @@ module.exports = function(config) {
       // Edit this to your needs
       loadFiles: [
         'test/helpers.js',
-        'test/unit/**/*.js'
+        'test/unit/**/*.spec.js'
       ],
       serveFiles: ['src/**/*.js'],
       paths: {
