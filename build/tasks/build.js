@@ -10,6 +10,9 @@ var assign = Object.assign || require('object.assign');
 var notify = require("gulp-notify");
 var browserSync = require('browser-sync');
 
+var sass = require('gulp-sass');
+var jspmResolver = require('gulp-systemjs-resolver');
+
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
 // by errors from other gulp plugins
@@ -31,7 +34,17 @@ gulp.task('build-html', function() {
     .pipe(gulp.dest(paths.output));
 });
 
-// copies changed css files to the output directory
+// Build the scss
+gulp.task('build-scss', function () {
+ return gulp.src(paths.scss)
+  .pipe(jspmResolver({systemConfig: './config.js'}))
+  .pipe(sourcemaps.init())
+  .pipe(sass().on('error', sass.logError))
+  .pipe(sourcemaps.write())
+  .pipe(gulp.dest(paths.css));
+});
+
+// copy the changed stylesheets to the output dir
 gulp.task('build-css', function() {
   return gulp.src(paths.css)
     .pipe(changed(paths.output, {extension: '.css'}))
@@ -46,7 +59,8 @@ gulp.task('build-css', function() {
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
-    ['build-system', 'build-html', 'build-css'],
+    ['build-system', 'build-html', 'build-scss'],
+    'build-css',
     callback
   );
 });

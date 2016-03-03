@@ -2,3 +2,4 @@ dist
 export
 coverage
 *.todo
+*.css
