@@ -1,4 +1,4 @@
-{
+module.exports = {
   "bundles": {
     "dist/app-build": {
       "includes": [
@@ -26,8 +26,7 @@
         "aurelia-loader-default",
         "aurelia-history-browser",
         "aurelia-logging-console",
-        "bootstrap",
-        "bootstrap/css/bootstrap.css!text"
+        "bootstrap-sass"
       ],
       "options": {
         "inject": true,
