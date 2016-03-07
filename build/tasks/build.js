@@ -10,6 +10,8 @@ var assign = Object.assign || require('object.assign');
 var notify = require("gulp-notify");
 var browserSync = require('browser-sync');
 
+// TODO: Think the jspmResolver can be replaced with something native to jspm-cli
+// (saw somethimg that suggests this is now built in but can't recall what atm!)
 var sass = require('gulp-sass');
 var jspmResolver = require('gulp-systemjs-resolver');
 

@@ -1,5 +1,3 @@
-// import 'bootstrap-sass';
-
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
