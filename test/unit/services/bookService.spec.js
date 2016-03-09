@@ -1,4 +1,3 @@
-import 'test/unit/_helpers/setup';
 import {BookService} from 'src/services/bookService';
 import {isPromise} from 'test/unit/_helpers/helpers';
 

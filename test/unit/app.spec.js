@@ -1,4 +1,3 @@
-import 'test/unit/_helpers/setup';
 import {App} from 'src/app';
 
 class RouterStub {
