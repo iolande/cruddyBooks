@@ -1,17 +1,22 @@
 <template>
-  <h2>Update user's book collection</h2>
-  <p>Add a new one / update one that's already there etc.</p>
-
-  <section class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Update book</h3>
-    </div>
-    <div class="panel-body">
+  <panel>
+    <panel-heading heading="Add or update a book"></panel-heading>
+    <panel-body>
       <book-search></book-search>
-
       <form>
-        <book-fields book.bind="selectedBook"></book-fields>
+        <fieldset>
+          <legend>Book details</legend>
+          <text-input id="title" label="Title" maxlength="50" value.two-way="selectedBook.title"></text-input>
+          <text-input id="author" label="Author" maxlength="50" value.two-way="selectedBook.author"></text-input>
+          <text-input id="genre" label="Genre" maxlength="50" value.two-way="selectedBook.genre"></text-input>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked.bind="selectedBook.read"> Read
+            </label>
+          </div>
+        </fieldset>
       </form>
-    </div>
-  </section>
+    </panel-body>
+  </panel>
 </template>
