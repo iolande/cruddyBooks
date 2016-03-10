@@ -1,6 +1,5 @@
-import 'test/unit/_helpers/setup';
-import {PanelFooter} from 'src/resources/components/panel/panel-footer';
+// import {PanelFooter} from 'src/resources/components/panel/panel-footer';
 
-describe('PanelFooter', () => {
+// describe('PanelFooter', () => {
 
-});
+// });

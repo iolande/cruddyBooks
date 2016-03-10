@@ -22,7 +22,7 @@ describe('Books', () => {
       expect(testee.bookService).toBe(mockBookService);
     });
 
-    it('should do something with sinon', done => {
+    xit('should do something with sinon', done => {
       const getBooksStub = sinon.stub(mockBookService, 'getBooks', () => {
         return Promise.resolve();
       });

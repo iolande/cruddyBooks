@@ -13,8 +13,7 @@ module.exports = function(config) {
     jspm: {
       // Edit this to your needs
       loadFiles: [
-        'test/unit/screens/books/books.spec.js'
-        // 'test/unit/**/*.spec.js'
+        'test/unit/**/*.spec.js'
       ],
       serveFiles: [
         'test/unit/_helpers/**/*.js',
