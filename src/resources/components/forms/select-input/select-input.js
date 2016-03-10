@@ -1,6 +1,8 @@
 import {bindable} from 'aurelia-framework';
 
 export class SelectInput {
-  @bindable fieldData;
-  @bindable fieldValue;
+  @bindable id = '';
+  @bindable label = '';
+  @bindable options = [];
+  @bindable description = '';
 }
