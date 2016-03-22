@@ -31,4 +31,8 @@ describe('the App module', () => {
   it('should have a books route', () => {
     expect(sut.router.routes).toContain({ route: ['', 'books'], name: 'books', moduleId: 'screens/books/books', nav: true, title: 'Books' });
   });
+
+  it('should have a demos route', () => {
+    expect(sut.router.routes).toContain({ route: 'demos', name: 'demos', moduleId: 'screens/demos/demo-router', nav: true, title: 'Demos' });
+  });
 });
