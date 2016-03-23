@@ -1,23 +1,40 @@
 <template>
   <section class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Add book</h3>
+      <h3 class="panel-title">Add or update a book</h3>
     </div>
     <div class="panel-body">
-      <form id="addBookForm" submit.delegate="addBook(formValues)">
-        <orig-text-input field-data.bind="titleData" field-value.two-way="formValues.title"></orig-text-input>
-        <orig-text-input field-data.bind="authorData" field-value.two-way="formValues.author"></orig-text-input>
-        <orig-text-input field-data.bind="genreData" field-value.two-way="formValues.genre"></orig-text-input>
+      <form class="clearfix" submit.delegate="doSearchByGenre()">
+        <search-input
+          label="Search by genre"
+          value.two-way="searchTerm"
+          placeholder="comedy, maths, biography..."
+          button-text="Go!"
+        ></search-input>
+      </form>
+      <ul class="list-unstyled">
+        <li repeat.for="book of booksFilteredByGenre">
+          <button type="button" click.delegate="selectBook(book)" class="btn btn-link">${book.title}</button>
+        </li>
+      </ul>
 
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" checked.bind="formValues.read"> Read
-          </label>
-        </div>
+      <form>
+        <fieldset>
+          <legend>Book details</legend>
+          <text-input label="Title" maxlength="50" value.bind="selectedBook.title"></text-input>
+          <text-input label="Author" maxlength="50" value.bind="selectedBook.author"></text-input>
+          <text-input label="Genre" maxlength="50" value.bind="selectedBook.genre" placeholder="science fiction, biography..."></text-input>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked.bind="selectedBook.read"> Read
+            </label>
+          </div>
+        </fieldset>
       </form>
     </div>
-    <div class="panel-footer">
-      <button class="btn btn-primary" form="addBookForm">Submit</button>
+    <div class="panel-footer clearfix">
+      <button class="btn btn-primary pull-right" click.trigger="saveAll()">Save all</button>
     </div>
   </section>
 </template>

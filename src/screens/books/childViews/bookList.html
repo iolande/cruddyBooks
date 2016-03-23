@@ -2,13 +2,9 @@
   <panel>
     <panel-heading heading="List books"></panel-heading>
     <panel-body>
-      <ul if.bind="bookList.length">
-        <li repeat.for="book of bookList">${book.title}</li>
+      <ul if.bind="books.length">
+        <li repeat.for="book of books">${book.title}</li>
       </ul>
     </panel-body>
-    <panel-footer>
-      <button click.trigger="getBooks()" class="btn btn-secondary">Get books</button>
-      <button click.trigger="fetchBooks()" class="btn btn-primary">Fetch books</button>
-    </panel-footer>
   </panel>
 </template>

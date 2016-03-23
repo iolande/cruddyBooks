@@ -1,29 +1,40 @@
 import {inject} from 'aurelia-framework';
-import {BookService} from '../../services/bookService';
+import {DataContext} from '../../services/datacontext';
 
-@inject(BookService)
+@inject(DataContext)
 export class Books {
-  constructor(bookService) {
-    this.bookList = [];
-    this.bookService = bookService;
+  searchTerm = '';
+  selectedBook = {
+    title: '',
+    author: '',
+    genre: '',
+    read: false
+  };
+
+  books = [];
+  booksFilteredByGenre = [];
+
+  constructor(dataContext) {
+    this.dataContext = dataContext;
   }
 
-  getBooks() {
-    console.log('getting');
-    return this.bookService.getBooks()
-      .then(response => { this.bookList = response; });
+  activate() {
+    return this.dataContext.getBooks()
+      .then(response => this.books = response);
   }
 
-  fetchBooks() {
-    console.log('fetching');
-    return this.bookService.fetchBooks()
-      .then(response => { this.bookList = response; });
+  doSearchByGenre() {
+    return this.dataContext.getBooks({ genre: this.searchTerm })
+      .then(response => this.booksFilteredByGenre = response);
+  }
+
+  selectBook(book) {
+    this.selectedBook = book;
   }
 
   addBook(formData) {
     console.log('submitting');
 
-    return this.bookService.postBook(formData)
-      .then(response => this.bookList.push(response))
+    return this.dataContext.saveBook(formData);
   }
 }
