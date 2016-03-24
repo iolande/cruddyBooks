@@ -43,7 +43,7 @@ gulp.task('build-scss', function () {
   .pipe(sourcemaps.init())
   .pipe(sass().on('error', sass.logError))
   .pipe(sourcemaps.write())
-  .pipe(gulp.dest(paths.css));
+  .pipe(gulp.dest(paths.output));
 });
 
 // copy the changed stylesheets to the output dir
