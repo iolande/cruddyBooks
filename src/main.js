@@ -2,6 +2,7 @@ export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .developmentLogging()
+    .plugin('aurelia-validation')
     .feature('resources/components');
 
   //Uncomment the line below to enable animation.
