@@ -33,8 +33,6 @@ export class Books {
   }
 
   addBook(formData) {
-    console.log('submitting');
-
     return this.dataContext.saveBook(formData);
   }
 }
