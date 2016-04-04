@@ -1,6 +1,4 @@
 import {HttpClient} from 'aurelia-http-client';
-import {HttpClient as FetchClient} from 'aurelia-fetch-client';
-import 'fetch';
 
 export class BookService {
   constructor() {
@@ -10,13 +8,6 @@ export class BookService {
         .withBaseUrl('http://localhost:8000/api/')
         .withResponseType('json')
         .withHeader('Content-Type', 'application/json');
-    });
-
-    this.fetchClient = new FetchClient();
-    this.fetchClient.configure(config => {
-      config
-        .useStandardConfiguration()
-        .withBaseUrl('http://localhost:8000/api/');
     });
   }
 
@@ -34,12 +25,6 @@ export class BookService {
   getBooks() {
     return this.httpClient.get('books')
       .then(response => JSON.parse(response && response.response))
-      .catch(this.serviceError);
-  }
-
-  fetchBooks() {
-    return this.fetchClient.fetch('books')
-      .then(response => response.json())
       .catch(this.serviceError);
   }
 
