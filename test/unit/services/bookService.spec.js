@@ -15,7 +15,6 @@ xdescribe('BookService', () => {
   describe('constructor', () => {
     it('should define core properties', () => {
       expect(testee.httpClient).toBeDefined();
-      expect(testee.fetchClient).toBeDefined();
     });
   });
 
