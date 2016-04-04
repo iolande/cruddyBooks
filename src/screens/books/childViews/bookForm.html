@@ -4,20 +4,7 @@
       <h3 class="panel-title">Add or update a book</h3>
     </div>
     <div class="panel-body">
-      <form class="clearfix" submit.delegate="doSearchByGenre()">
-        <search-input
-          label="Search by genre"
-          value.two-way="searchTerm"
-          placeholder="comedy, maths, biography..."
-          button-text="Go!"
-        ></search-input>
-      </form>
-      <ul class="list-unstyled">
-        <li repeat.for="book of booksFilteredByGenre">
-          <button type="button" click.delegate="selectBook(book)" class="btn btn-link">${book.title}</button>
-        </li>
-      </ul>
-
+      <book-finder></book-finder>
       <form>
         <fieldset>
           <legend>Book details</legend>

@@ -1,4 +1,16 @@
 <template>
   <require from="./book-finder.css"></require>
-  <h1>Contrived custom component</h1>
+  <form class="clearfix" submit.delegate="doSearchByGenre()">
+    <search-input
+      label="Search by genre"
+      value.two-way="searchTerm"
+      placeholder="comedy, maths, biography..."
+      button-text="Go!"
+    ></search-input>
+  </form>
+  <ul class="list-unstyled">
+    <li repeat.for="book of booksFilteredByGenre">
+      <button type="button" click.delegate="selectBook(book)" class="btn btn-link">${book.title}</button>
+    </li>
+  </ul>
 </template>

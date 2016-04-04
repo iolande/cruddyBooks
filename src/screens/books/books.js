@@ -3,7 +3,6 @@ import {DataContext} from '../../services/dataContext';
 
 @inject(DataContext)
 export class Books {
-  searchTerm = '';
   selectedBook = {
     title: '',
     author: '',
@@ -12,7 +11,6 @@ export class Books {
   };
 
   books = [];
-  booksFilteredByGenre = [];
 
   constructor(dataContext) {
     this.dataContext = dataContext;
@@ -21,11 +19,6 @@ export class Books {
   activate() {
     return this.dataContext.getBooks()
       .then(response => this.books = response);
-  }
-
-  doSearchByGenre() {
-    return this.dataContext.getBooks({ genre: this.searchTerm })
-      .then(response => this.booksFilteredByGenre = response);
   }
 
   selectBook(book) {
