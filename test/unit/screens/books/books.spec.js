@@ -1,38 +1,26 @@
 import {Books} from 'src/screens/books/books';
-import {MockBookService} from 'test/unit/_helpers/services/bookService';
 import {isPromise} from 'test/unit/_helpers/helpers';
 
 describe('Books', () => {
   let testee;
-  let mockBookService;
+  let mockDataContext;
+
+  class MockDataContext {}
 
   beforeEach(() => {
-    mockBookService = new MockBookService();
-    testee = new Books(mockBookService);
+    mockDataContext = new MockDataContext();
+    testee = new Books(mockDataContext);
   });
 
   afterEach(() => {
-    mockBookService = null;
+    mockDataContext = null;
     testee = null;
   });
 
   describe('constructor', () => {
     it('should correctly construct the properties', () => {
-      expect(testee.bookList).toEqual([]);
-      expect(testee.bookService).toBe(mockBookService);
-    });
-
-    xit('should do something with sinon', done => {
-      const getBooksStub = sinon.stub(mockBookService, 'getBooks', () => {
-        return Promise.resolve();
-      });
-
-      testee.getBooks();
-
-      setTimeout(function() {
-        expect(getBooksStub.calledOnce).toBeTruthy();
-        done();
-      }, 1);
+      expect(testee.books).toEqual([]);
+      expect(testee.dataContext).toBe(mockDataContext);
     });
   });
 });
