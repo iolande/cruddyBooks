@@ -3,13 +3,16 @@ import {isPromise} from 'test/unit/_helpers/helpers';
 
 xdescribe('BookService', () => {
   let testee;
+  let sandbox;
 
   beforeEach(() => {
     testee = new BookService();
+    sandbox = sinon.sandbox.create();
   });
 
   afterEach(() => {
     testee = null;
+    sandbox.restore();
   });
 
   describe('constructor', () => {
@@ -19,13 +22,15 @@ xdescribe('BookService', () => {
   });
 
   describe('getBooks via httpClient', () => {
-    it('should GET once from the service', (done) => {
-      let getSpy = sinon.spy(testee.httpClient, 'get');
+    it('should GET once from the service', done => {
+      // let getSpy = sandbox.spy(testee.httpClient, 'get');
+      testee.httpClient.get = sandbox.stub().returns(() => Promise.resolve());
+      // widget.fetch = sandbox.stub().returns({ one: 1, two: 2 });
       testee.getBooks();
 
       setTimeout(function() {
-        expect(getSpy.calledOnce).toBeTruthy();
-        testee.httpClient.get.restore();
+        expect(testee.httpClient.get.called).toBeTruthy();
+        // testee.httpClient.get.restore();
         done();
       }, 1);
     });
@@ -60,8 +65,8 @@ xdescribe('BookService', () => {
     let failureSpy;
 
     beforeEach(() => {
-      sendSpy = sinon.spy(testee.httpClient, 'send');
-      fakeServer = sinon.fakeServer.create();
+      sendSpy = sandbox.spy(testee.httpClient, 'send');
+      fakeServer = sandbox.fakeServer.create();
       successResponse = [ 200, { "Content-Type": "application/json" }, '{ "stuff": "is", "awesome": "in here" }' ];
 
       fakeServer.respondWith('POST', 'books', successResponse);
@@ -69,8 +74,8 @@ xdescribe('BookService', () => {
         book: 'information'
       };
 
-      successSpy = sinon.spy();
-      failureSpy = sinon.spy();
+      successSpy = sandbox.spy();
+      failureSpy = sandbox.spy();
 
       testee.postBook(fakeData)
         .then(successSpy)
