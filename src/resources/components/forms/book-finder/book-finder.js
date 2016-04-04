@@ -10,6 +10,10 @@ export class BookFinder {
     this.dataContext = dataContext;
   }
 
+  bind(ctx) {
+    this.parentContext = ctx;
+  }
+
   doSearchByGenre() {
     return this.dataContext.getBooks({ genre: this.searchTerm })
       .then(response => this.booksFilteredByGenre = response);

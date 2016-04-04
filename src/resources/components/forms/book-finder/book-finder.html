@@ -10,7 +10,7 @@
   </form>
   <ul class="list-unstyled">
     <li repeat.for="book of booksFilteredByGenre">
-      <button type="button" click.delegate="selectBook(book)" class="btn btn-link">${book.title}</button>
+      <button type="button" click.delegate="parentContext.selectBook(book)" class="btn btn-link">${book.title}</button>
     </li>
   </ul>
 </template>
