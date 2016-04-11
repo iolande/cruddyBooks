@@ -10,7 +10,7 @@ export class Books {
     read: false
   };
 
-  books = [];
+  books = null;
 
   constructor(dataContext) {
     this.dataContext = dataContext;

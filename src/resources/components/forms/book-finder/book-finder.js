@@ -15,7 +15,7 @@ export class BookFinder {
   }
 
   doSearchByGenre() {
-    return this.dataContext.getBooks({ genre: this.searchTerm })
+    return this.dataContext.getBooksByGenre(this.searchTerm)
       .then(response => this.booksFilteredByGenre = response);
   }
 }

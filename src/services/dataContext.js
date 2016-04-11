@@ -9,18 +9,28 @@ export class DataContext {
     this.bookService = bookService;
   }
 
-  getBooks(params) {
-    let promise;
-    let callData = null;
-
-    if(!!params && !!params.genre) {
-      promise = 'getBooksByGenre';
-      callData = params.genre;
+  getBooks() {
+    if(this.books.length) {
+      return new Promise();
     } else {
-      promise = 'getBooks';
+      return this.bookService.getBooks()
+        .then(response => this.books = response);
     }
+  }
 
-    return this.bookService[promise](callData)
-      .then(response => this.books = response);
+  getBooksByGenre(genre) {
+    if(this.books.length) {
+      // filter cached array by genre & return
+      let filteredArray = this.books.filter(book => {
+        return book.genre.toLowerCase() === genre.toLowerCase();
+      });
+
+      return new Promise(resolve => {
+        resolve(filteredArray);
+      });
+    } else {
+      // or I could do a getBooks() then filter as above so they're cached
+      return this.bookService.getBooksByGenre(genre);
+    }
   }
 }
