@@ -17,11 +17,8 @@ export class Books {
   }
 
   activate() {
-    // Load up the data needed for this screen to be ready
     return this.dataContext.getBooks()
-      .then(response => {
-        this.books = this.dataContext.books;
-      });
+      .then(response => this.books = response);
   }
 
   selectBook(book) {
