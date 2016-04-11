@@ -1,8 +1,10 @@
+import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
 
+@inject(HttpClient)
 export class BookService {
-  constructor() {
-    this.httpClient = new HttpClient();
+  constructor(httpClient) {
+    this.httpClient = httpClient;
     this.httpClient.configure(config => {
       config
         .withBaseUrl('http://localhost:8000/api/')
