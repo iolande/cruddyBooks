@@ -10,8 +10,8 @@ export class DataContext {
   }
 
   getBooks() {
-    if(this.books.length) {
-      return new Promise();
+    if(!!this.books.length) {
+      return Promise.resolve();
     } else {
       return this.bookService.getBooks()
         .then(response => this.books = response);
@@ -19,15 +19,18 @@ export class DataContext {
   }
 
   getBooksByGenre(genre) {
-    if(this.books.length) {
+    if(!!this.books.length) {
       // filter cached array by genre & return
       let filteredArray = this.books.filter(book => {
         return book.genre.toLowerCase() === genre.toLowerCase();
       });
 
-      return new Promise(resolve => {
-        resolve(filteredArray);
-      });
+      // TODO: is this bad practice? Should I always return a new Promise with resolve and reject?
+      return Promise.resolve(filteredArray);
+
+      // return new Promise(resolve => {
+      //   resolve(filteredArray);
+      // });
     } else {
       // or I could do a getBooks() then filter as above so they're cached
       return this.bookService.getBooksByGenre(genre);
