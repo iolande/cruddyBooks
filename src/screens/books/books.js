@@ -18,7 +18,7 @@ export class Books {
 
   activate() {
     return this.dataContext.getBooks()
-      .then(response => this.books = response);
+      .then(() => this.books = this.dataContext.books);
   }
 
   selectBook(book) {

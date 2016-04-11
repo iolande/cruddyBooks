@@ -3,6 +3,8 @@ import {BookService} from './bookService';
 
 @inject(BookService)
 export class DataContext {
+  books = [];
+
   constructor(bookService) {
     this.bookService = bookService;
   }
@@ -18,6 +20,7 @@ export class DataContext {
       promise = 'getBooks';
     }
 
-    return this.bookService[promise](callData);
+    return this.bookService[promise](callData)
+      .then(response => this.books = response);
   }
 }
