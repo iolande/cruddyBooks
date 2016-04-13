@@ -1,5 +1,5 @@
-import {inject} from 'aurelia-framework';
-import {BookService} from './bookService';
+import { inject } from 'aurelia-framework';
+import { BookService } from './bookService';
 
 @inject(BookService)
 export class DataContext {

@@ -1,60 +1,57 @@
-import { Container } from 'aurelia-framework';
-import { MockHttpClient } from 'test/unit/_helpers/aurelia/mockHttpClient';
+import { HttpClient } from 'aurelia-http-client';
 import {isPromise} from 'test/unit/_helpers/helpers';
 
 import {BookService} from 'src/services/bookService';
 
+import {initialize} from 'aurelia-pal-browser';
+initialize();
+
 xdescribe('TestBookService', () => {
   let testee;
   let sandbox;
-  let container;
+  let fakeInterceptor;
+
+  class FakeInterceptor {
+    messageCopy = null;
+    request(message) {
+      this.messageCopy = message;
+      return message;
+    }
+  }
 
   beforeEach(() => {
-    // container = new Container();
-    // container.registerInstance('HttpClient', MockHttpClient);
-
-    testee = new BookService(new MockHttpClient());
+    fakeInterceptor = new FakeInterceptor();
+    testee = new BookService(new HttpClient(), fakeInterceptor);
     sandbox = sinon.sandbox.create();
   });
 
   afterEach(() => {
-    // container = null;
     testee = null;
+    fakeInterceptor = null;
     sandbox.restore();
   });
 
-  describe('constructor', () => {
-    it('should define core properties', () => {
-      expect(testee.httpClient).toBeDefined();
-    });
-  });
+  it('should call the API with the correct Content-Type header', done => {
+    let requestMessage;
+    let server = sinon.fakeServer.create();
+    let okResponse = [
+      200,
+      { 'Content-type': 'application/json' },
+      '{"hello":"world"}'
+    ];
 
-  describe('getBooks', () => {
-    it('should GET once from the service', () => {
-      testee.httpClient.get = sandbox.stub().returns(Promise.resolve());
+    server.respondWith('GET', 'http://localhost:8000/api/books', okResponse);
 
-      testee.getBooks();
+    testee.getBooks();
 
-      expect(testee.httpClient.get.called).toBeTruthy();
-    });
+    setTimeout(function() {
+      requestMessage = fakeInterceptor.messageCopy;
 
-    it('should return a promise', done => {
-      testee.httpClient.get = sandbox.stub().returns(Promise.resolve());
-      const getBooksResponse = testee.getBooks();
+      expect(requestMessage.headers.headers['Content-Type']).toBe('application/json');
+      done();
+    }, 1);
 
-      setTimeout(function() {
-        expect(isPromise(getBooksResponse)).toBeTruthy();
-        done();
-      }, 1);
-    });
-
-    describe('success', () => {
-      it('should parse the response as JSON');
-      it('should call the failure callback if the response does not parse as JSON');
-    });
-
-    describe('failure', () => {
-      it('should call the failure callback');
-    });
+    server.respond();
+    server.restore();
   });
 });
