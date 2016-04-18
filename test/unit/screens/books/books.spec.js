@@ -1,7 +1,7 @@
 import {Books} from 'src/screens/books/books';
 import {isPromise} from 'test/unit/_helpers/helpers';
 
-describe('Books', () => {
+fdescribe('Books', () => {
   let testee;
   let mockDataContext;
 
@@ -19,7 +19,7 @@ describe('Books', () => {
 
   describe('constructor', () => {
     it('should correctly construct the properties', () => {
-      expect(testee.books).toEqual([]);
+      expect(testee.books).toBeNull();
       expect(testee.dataContext).toBe(mockDataContext);
     });
   });
