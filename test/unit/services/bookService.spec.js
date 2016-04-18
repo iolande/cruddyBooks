@@ -54,7 +54,7 @@ describe('BookService', () => {
     let fakeServer;
     let successResponse;
 
-    let fakeData;
+    let mockData;
     let successSpy;
     let failureSpy;
 
@@ -64,14 +64,14 @@ describe('BookService', () => {
       successResponse = [200, { "Content-Type": "application/json" }, '{ "stuff": "is", "awesome": "in here" }'];
 
       fakeServer.respondWith('POST', 'books', successResponse);
-      fakeData = {
+      mockData = {
         book: 'information'
       };
 
       successSpy = sandbox.spy();
       failureSpy = sandbox.spy();
 
-      sut.postBook(fakeData)
+      sut.postBook(mockData)
         .then(successSpy)
         .catch(failureSpy);
 
@@ -85,7 +85,7 @@ describe('BookService', () => {
 
       successSpy = null;
       failureSpy = null;
-      fakeData = null;
+      mockData = null;
     });
 
     /*  TODO: Work out why the promise resolve / fail
@@ -118,7 +118,7 @@ describe('BookService', () => {
       setTimeout(function() {
         reqArgs = sendSpy.args[0][0];
 
-        expect(reqArgs.content).toEqual(JSON.stringify(fakeData));
+        expect(reqArgs.content).toEqual(JSON.stringify(mockData));
         done();
       }, 1);
     });

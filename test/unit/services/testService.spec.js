@@ -9,9 +9,9 @@ initialize();
 xdescribe('TestBookService', () => {
   let sut;
   let sandbox;
-  let fakeInterceptor;
+  let mockInterceptor;
 
-  class FakeInterceptor {
+  class MockInterceptor {
     messageCopy = null;
     request(message) {
       this.messageCopy = message;
@@ -20,14 +20,14 @@ xdescribe('TestBookService', () => {
   }
 
   beforeEach(() => {
-    fakeInterceptor = new FakeInterceptor();
-    sut = new BookService(new HttpClient(), fakeInterceptor);
+    mockInterceptor = new MockInterceptor();
+    sut = new BookService(new HttpClient(), mockInterceptor);
     sandbox = sinon.sandbox.create();
   });
 
   afterEach(() => {
     sut = null;
-    fakeInterceptor = null;
+    mockInterceptor = null;
     sandbox.restore();
   });
 
@@ -45,7 +45,7 @@ xdescribe('TestBookService', () => {
     sut.getBooks();
 
     setTimeout(function() {
-      requestMessage = fakeInterceptor.messageCopy;
+      requestMessage = mockInterceptor.messageCopy;
 
       expect(requestMessage.headers.headers['Content-Type']).toBe('application/json');
       done();
