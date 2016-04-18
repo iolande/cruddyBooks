@@ -1,7 +1,7 @@
 import { HttpClient } from 'aurelia-http-client'
 import { BookService } from 'src/services/bookService';
 
-fdescribe('BookService', () => {
+describe('BookService', () => {
   let testee;
   let sandbox;
 
