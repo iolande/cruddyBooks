@@ -2,40 +2,40 @@ import { HttpClient } from 'aurelia-http-client'
 import { BookService } from 'src/services/bookService';
 
 describe('BookService', () => {
-  let testee;
+  let sut;
   let sandbox;
 
   beforeEach(() => {
-    testee = new BookService(new HttpClient());
+    sut = new BookService(new HttpClient());
     sandbox = sinon.sandbox.create();
   });
 
   afterEach(() => {
-    testee = null;
+    sut = null;
     sandbox.restore();
   });
 
   describe('constructor', () => {
     it('should define core properties', () => {
-      expect(testee.httpClient).toBeDefined();
+      expect(sut.httpClient).toBeDefined();
     });
   });
 
   describe('getBooks', () => {
     it('should GET once from the service', () => {
-      testee.httpClient.get = sandbox.stub().returns(Promise.resolve());
+      sut.httpClient.get = sandbox.stub().returns(Promise.resolve());
 
-      testee.getBooks();
+      sut.getBooks();
 
-      expect(testee.httpClient.get.calledOnce).toBeTruthy();
+      expect(sut.httpClient.get.calledOnce).toBeTruthy();
     });
 
     it('should return the httpClient call', () => {
-      testee.httpClient.get = sandbox.stub().returnsThis();
+      sut.httpClient.get = sandbox.stub().returnsThis();
 
-      let testResponse = testee.getBooks();
+      let testResponse = sut.getBooks();
 
-      expect(testResponse).toEqual(testee.httpClient.get());
+      expect(testResponse).toEqual(sut.httpClient.get());
     });
 
     describe('success', () => {
@@ -59,7 +59,7 @@ describe('BookService', () => {
     let failureSpy;
 
     beforeEach(() => {
-      sendSpy = sandbox.spy(testee.httpClient, 'send');
+      sendSpy = sandbox.spy(sut.httpClient, 'send');
       fakeServer = sandbox.fakeServer.create();
       successResponse = [200, { "Content-Type": "application/json" }, '{ "stuff": "is", "awesome": "in here" }'];
 
@@ -71,7 +71,7 @@ describe('BookService', () => {
       successSpy = sandbox.spy();
       failureSpy = sandbox.spy();
 
-      testee.postBook(fakeData)
+      sut.postBook(fakeData)
         .then(successSpy)
         .catch(failureSpy);
 
@@ -80,7 +80,7 @@ describe('BookService', () => {
 
     afterEach(() => {
       successResponse = null;
-      testee.httpClient.send.restore();
+      sut.httpClient.send.restore();
       fakeServer.restore();
 
       successSpy = null;

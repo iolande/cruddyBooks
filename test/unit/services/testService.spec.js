@@ -7,7 +7,7 @@ import {initialize} from 'aurelia-pal-browser';
 initialize();
 
 xdescribe('TestBookService', () => {
-  let testee;
+  let sut;
   let sandbox;
   let fakeInterceptor;
 
@@ -21,12 +21,12 @@ xdescribe('TestBookService', () => {
 
   beforeEach(() => {
     fakeInterceptor = new FakeInterceptor();
-    testee = new BookService(new HttpClient(), fakeInterceptor);
+    sut = new BookService(new HttpClient(), fakeInterceptor);
     sandbox = sinon.sandbox.create();
   });
 
   afterEach(() => {
-    testee = null;
+    sut = null;
     fakeInterceptor = null;
     sandbox.restore();
   });
@@ -42,7 +42,7 @@ xdescribe('TestBookService', () => {
 
     server.respondWith('GET', 'http://localhost:8000/api/books', okResponse);
 
-    testee.getBooks();
+    sut.getBooks();
 
     setTimeout(function() {
       requestMessage = fakeInterceptor.messageCopy;

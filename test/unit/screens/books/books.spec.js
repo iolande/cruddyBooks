@@ -2,25 +2,25 @@ import {Books} from 'src/screens/books/books';
 import {isPromise} from 'test/unit/_helpers/helpers';
 
 describe('Books', () => {
-  let testee;
+  let sut;
   let mockDataContext;
 
   class MockDataContext {}
 
   beforeEach(() => {
     mockDataContext = new MockDataContext();
-    testee = new Books(mockDataContext);
+    sut = new Books(mockDataContext);
   });
 
   afterEach(() => {
     mockDataContext = null;
-    testee = null;
+    sut = null;
   });
 
   describe('constructor', () => {
     it('should correctly construct the properties', () => {
-      expect(testee.books).toBeNull();
-      expect(testee.dataContext).toBe(mockDataContext);
+      expect(sut.books).toBeNull();
+      expect(sut.dataContext).toBe(mockDataContext);
     });
   });
 });
