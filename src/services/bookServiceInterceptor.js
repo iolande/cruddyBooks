@@ -4,6 +4,6 @@ export class BookServiceInterceptor {
   }
 
   response(message) {
-    return message;
+    return JSON.parse(message && message.response);
   }
 }

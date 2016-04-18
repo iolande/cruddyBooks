@@ -21,12 +21,12 @@ describe('BookServiceInterceptor', () => {
     expect(resultMessage).toEqual(requestMessage);
   });
 
-  it('should pass the response straight through', () => {
-    let responseMessage = { some: 'message' };
+  it('should return the response data if it parses as valid JSON', () => {
+    let responseMessage = {response: JSON.stringify({ some: 'message' })};
     let resultMessage = null;
 
     resultMessage = sut.response(responseMessage);
 
-    expect(resultMessage).toEqual(responseMessage);
+    expect(resultMessage).toEqual(JSON.parse(responseMessage.response));
   });
 });
