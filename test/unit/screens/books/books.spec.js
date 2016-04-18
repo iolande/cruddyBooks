@@ -1,7 +1,7 @@
 import {Books} from 'src/screens/books/books';
 import {isPromise} from 'test/unit/_helpers/helpers';
 
-fdescribe('Books', () => {
+describe('Books', () => {
   let testee;
   let mockDataContext;
 
