@@ -11,12 +11,11 @@ export class DataContext {
 
   getBooks() {
     if(!!this.books.length) {
-      return Promise.resolve();
-    } else {
-      return this.bookService.getBooks()
-        .then(response => JSON.parse(response && response.response))
-        .then(response => this.books = response);
+      return Promise.resolve(this.books);
     }
+
+    return this.bookService.getBooks()
+      .then(response => this.books = response);
   }
 
   getBooksByGenre(genre) {
@@ -27,9 +26,9 @@ export class DataContext {
       });
 
       return Promise.resolve(filteredArray);
-    } else {
-      // or I could do a getBooks() then filter as above so they're cached
-      return this.bookService.getBooksByGenre(genre);
     }
+
+    // or I could do a getBooks() then filter as above so they're cached
+    return this.bookService.getBooksByGenre(genre);
   }
 }
