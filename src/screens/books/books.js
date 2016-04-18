@@ -26,10 +26,6 @@ export class Books {
     this.selectedBook = book;
   }
 
-  tryOutGetCachedBooks() {
-    return this.dataContext.getBooks();
-  }
-
   addBook(formData) {
     return this.dataContext.saveBook(formData);
   }
