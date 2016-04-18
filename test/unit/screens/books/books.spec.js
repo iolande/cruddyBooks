@@ -1,11 +1,22 @@
 import {Books} from 'src/screens/books/books';
 import {isPromise} from 'test/unit/_helpers/helpers';
 
+class MockDataContext {
+  bookArray = [
+    { title: 'A book', genre: 'Comedy' },
+    { title: 'Another book', genre: 'Fantasy' },
+    { title: 'Yet another book', genre: 'Comedy' }
+  ];
+
+  successMessage = 'Success';
+
+  getBooks = sinon.stub().returns(Promise.resolve(this.bookArray));
+  saveBook = sinon.stub().returns(this.successMessage);
+}
+
 describe('Books', () => {
   let sut;
   let mockDataContext;
-
-  class MockDataContext {}
 
   beforeEach(() => {
     mockDataContext = new MockDataContext();
@@ -21,6 +32,45 @@ describe('Books', () => {
     it('should correctly construct the properties', () => {
       expect(sut.books).toBeNull();
       expect(sut.dataContext).toBe(mockDataContext);
+    });
+  });
+
+  describe('activate', () => {
+    it('should update the viewmodel with books from the dataContext', done => {
+      const viewmodelBooksBeforeTest = sut.books;
+
+      sut.activate()
+        .then(response => {
+          expect(sut.dataContext.getBooks.calledOnce).toBeTruthy();
+          expect(sut.books).not.toEqual(viewmodelBooksBeforeTest);
+          expect(sut.books).toEqual(mockDataContext.bookArray);
+
+          done();
+        });
+    });
+
+    it('should handle errors returned from the call to the dataContext');
+  });
+
+  describe('selectBook', () => {
+    it('should set the selectedBook on the viewmodel', () => {
+      const selectedBookBeforeTest = JSON.parse(JSON.stringify(sut.selectedBook));
+      const bookForSelection = { title: 'Select book', genre: 'Science' };
+
+      sut.selectBook(bookForSelection);
+
+      expect(sut.selectedBook).not.toEqual(selectedBookBeforeTest);
+      expect(sut.selectedBook).toEqual(bookForSelection);
+    });
+  });
+
+  describe('addBook', () => {
+    it('should save input the book to the dataContext', () => {
+      const bookForAddition = { title: 'Additional book', genre: 'Etymology' };
+
+      sut.addBook(bookForAddition);
+
+      expect(sut.dataContext.saveBook.calledOnce).toBeTruthy();
     });
   });
 });
