@@ -1,5 +1,5 @@
-import {DemoIndex} from 'src/screens/demos/demo-index';
+// import {DemoIndex} from 'src/screens/demos/demo-index';
 
-describe('DemoIndex', () => {
+// describe('DemoIndex', () => {
 
-});
+// });

@@ -14,6 +14,7 @@ export class DataContext {
       return Promise.resolve();
     } else {
       return this.bookService.getBooks()
+        .then(response => JSON.parse(response && response.response))
         .then(response => this.books = response);
     }
   }
@@ -25,12 +26,7 @@ export class DataContext {
         return book.genre.toLowerCase() === genre.toLowerCase();
       });
 
-      // TODO: is this bad practice? Should I always return a new Promise with resolve and reject?
       return Promise.resolve(filteredArray);
-
-      // return new Promise(resolve => {
-      //   resolve(filteredArray);
-      // });
     } else {
       // or I could do a getBooks() then filter as above so they're cached
       return this.bookService.getBooksByGenre(genre);

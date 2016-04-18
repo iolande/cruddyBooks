@@ -1,24 +1,16 @@
-import { Container } from 'aurelia-framework';
-import { MockHttpClient } from 'test/unit/_helpers/aurelia/mockHttpClient';
-import { isPromise } from 'test/unit/_helpers/helpers';
-
+import { HttpClient } from 'aurelia-http-client'
 import { BookService } from 'src/services/bookService';
 
-xdescribe('BookService', () => {
+fdescribe('BookService', () => {
   let testee;
   let sandbox;
-  let container;
 
   beforeEach(() => {
-    // container = new Container();
-    // container.registerInstance('HttpClient', MockHttpClient);
-
-    testee = new BookService(new MockHttpClient());
+    testee = new BookService(new HttpClient());
     sandbox = sinon.sandbox.create();
   });
 
   afterEach(() => {
-    // container = null;
     testee = null;
     sandbox.restore();
   });
@@ -35,17 +27,15 @@ xdescribe('BookService', () => {
 
       testee.getBooks();
 
-      expect(testee.httpClient.get.called).toBeTruthy();
+      expect(testee.httpClient.get.calledOnce).toBeTruthy();
     });
 
-    it('should return a promise', done => {
-      testee.httpClient.get = sandbox.stub().returns(Promise.resolve());
-      const getBooksResponse = testee.getBooks();
+    it('should return the httpClient call', () => {
+      testee.httpClient.get = sandbox.stub().returnsThis();
 
-      setTimeout(function() {
-        expect(isPromise(getBooksResponse)).toBeTruthy();
-        done();
-      }, 1);
+      let testResponse = testee.getBooks();
+
+      expect(testResponse).toEqual(testee.httpClient.get());
     });
 
     describe('success', () => {

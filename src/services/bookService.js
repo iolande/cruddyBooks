@@ -18,18 +18,14 @@ export class BookService {
   getBooksByGenre(genre) {
     return this.httpClient.createRequest('books')
       .asGet()
-      .withParams({
-        genre: genre
-      })
-      .send()
-      .then(response => JSON.parse(response && response.response))
-      .catch(this.serviceError);
+        .withParams({
+          genre: genre
+        })
+      .send();
   }
 
   getBooks() {
     return this.httpClient.get('books');
-    // .then(response => JSON.parse(response && response.response))
-    // .catch(this.serviceError);
   }
 
   postBook(data) {
@@ -39,9 +35,5 @@ export class BookService {
       .asPost()
       .withContent(content)
       .send();
-  }
-
-  serviceError(response) {
-    console.log(response);
   }
 }
