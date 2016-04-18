@@ -2,9 +2,9 @@ import { DataContext } from 'src/services/dataContext';
 
 class MockBookService {
   validResponseObject = [{"_id":"56be607391d3d47315637a4a","author":"Frank Herbert","title":"Dune","genre":"Science Fiction","__v":0,"read":false,"links":{"self":"http://localhost:8000/api/books/56be607391d3d47315637a4a"}}];
-  invalidResponseObject = 'Something has gone wrong';
 
   getBooks = sinon.stub().returns(Promise.resolve(this.validResponseObject));
+  getBooksByGenre = sinon.stub().returns(Promise.resolve(this.validResponseObject));
 }
 
 describe('DataContext', () => {
@@ -83,5 +83,40 @@ describe('DataContext', () => {
         });
       });
     });
+  });
+
+  describe('getBooksByGenre', () => {
+    describe('when books are cached', () => {
+      it('should filter the cached books by genre and return the appropriate subset', done => {
+        const book1 = { title: 'A book', genre: 'Comedy' };
+        const book2 = { title: 'Another book', genre: 'Fantasy' };
+        const book3 = { title: 'Yet another book', genre: 'Comedy' };
+
+        sut.books.push(book1);
+        sut.books.push(book2);
+        sut.books.push(book3);
+
+        const expectedSubset = [book1, book3];
+
+        sut.getBooksByGenre('comedy')
+          .then(response => {
+            expect(response).toEqual(expectedSubset);
+            expect(sut.bookService.getBooks.called).toBeFalsy();
+
+            done();
+          });
+      });
+    });
+
+    describe('when the cache is empty', () => {
+      it('should call the book service', done => {
+        sut.getBooksByGenre('nonsense')
+          .then(response => {
+            expect(sut.bookService.getBooksByGenre.calledOnce).toBeTruthy();
+
+            done();
+          });
+      });
+    })
   });
 });
