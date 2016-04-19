@@ -70,9 +70,7 @@ describe('DataContext', () => {
 
           sut.getBooks()
             .then(response => {
-              expect(true).toBeFalsy();
-
-              done();
+              done.fail(response);
             })
             .catch(response => {
               expect(sut.books.length).toEqual(0);
