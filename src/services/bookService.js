@@ -33,7 +33,7 @@ export class BookService {
 
     return this.httpClient.createRequest('books')
       .asPost()
-      .withContent(content)
+        .withContent(content)
       .send();
   }
 }
