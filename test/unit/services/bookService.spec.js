@@ -37,15 +37,6 @@ describe('BookService', () => {
 
       expect(testResponse).toEqual(sut.httpClient.get());
     });
-
-    describe('success', () => {
-      it('should parse the response as JSON');
-      it('should call the failure callback if the response does not parse as JSON');
-    });
-
-    describe('failure', () => {
-      it('should call the failure callback');
-    });
   });
 
   xdescribe('postBook via httpClient', () => {
