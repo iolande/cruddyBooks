@@ -13,6 +13,7 @@ module.exports = function(config) {
     jspm: {
       // Edit this to your needs
       loadFiles: [
+        'test/unit/_helpers/setup.js',
         'test/unit/**/*.spec.js'
       ],
       serveFiles: [
