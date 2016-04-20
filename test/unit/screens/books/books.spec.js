@@ -1,5 +1,4 @@
 import {Books} from 'src/screens/books/books';
-import {isPromise} from 'test/unit/_helpers/helpers';
 
 class MockDataContext {
   bookArray = [
@@ -40,7 +39,7 @@ describe('Books', () => {
       const viewmodelBooksBeforeTest = sut.books;
 
       sut.activate()
-        .then(response => {
+        .then(() => {
           expect(sut.dataContext.getBooks.calledOnce).toBeTruthy();
           expect(sut.books).not.toEqual(viewmodelBooksBeforeTest);
           expect(sut.books).toEqual(mockDataContext.bookArray);

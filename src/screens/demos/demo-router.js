@@ -6,7 +6,7 @@ export class DemoRouter {
       { route: 'panels', name: 'panels', moduleId: 'screens/demos/demo-panels', nav: true, title: 'Panels' }
     ]);
 
-    router.baseUrl = "demos"
+    router.baseUrl = "demos";
     this.router = router;
   }
 }

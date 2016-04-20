@@ -1,9 +1,10 @@
 {
-  "ecmaFeatures": {
-      "modules": true
-  },
+  "extends": "eslint:recommended",
   "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
   "rules": {
-    "no-alert": 0
+    "semi": 2
   }
 }

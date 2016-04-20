@@ -1,4 +1,3 @@
-import { HttpClient } from 'aurelia-http-client'
 import { BookServiceInterceptor } from 'src/services/bookServiceInterceptor';
 
 describe('BookServiceInterceptor', () => {

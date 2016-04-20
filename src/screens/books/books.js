@@ -18,8 +18,8 @@ export class Books {
 
   activate() {
     return this.dataContext.getBooks()
-      .then(response => this.books = response)
-      .catch(console.log.bind(console)); // What does this do, exactly? #3 in this article https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html
+      .then(response => this.books = response);
+      // .catch(console.log.bind(console)); // What does this do, exactly? #3 in this article https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html
   }
 
   selectBook(book) {

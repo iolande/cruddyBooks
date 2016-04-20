@@ -11,5 +11,6 @@ module.exports = {
   style: 'styles/**/*.css',
   output: outputRoot,
   exportSrv: exportSrvRoot,
-  doc: './doc'
+  doc: './doc',
+  test: 'test/**/*.js'
 };

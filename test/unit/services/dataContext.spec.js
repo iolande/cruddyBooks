@@ -46,7 +46,7 @@ describe('DataContext', () => {
     describe('when the books cache is empty', () => {
       it('should call the book service', done => {
         sut.getBooks()
-          .then(response => {
+          .then(() => {
             expect(sut.bookService.getBooks.calledOnce).toBeTruthy();
 
             done();
@@ -56,7 +56,7 @@ describe('DataContext', () => {
       describe('after a successful call to the book service', () => {
         it('should update the cache from the service response', done => {
           sut.getBooks()
-            .then(response => {
+            .then(() => {
               expect(sut.books.length).not.toEqual(0);
 
               done();
@@ -109,7 +109,7 @@ describe('DataContext', () => {
     describe('when the cache is empty', () => {
       it('should call the book service', done => {
         sut.getBooksByGenre('nonsense')
-          .then(response => {
+          .then(() => {
             expect(sut.bookService.getBooksByGenre.calledOnce).toBeTruthy();
 
             done();

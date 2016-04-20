@@ -10,7 +10,7 @@ export class DataContext {
   }
 
   getBooks() {
-    if(!!this.books.length) {
+    if(this.books.length > 0) {
       return Promise.resolve(this.books);
     }
 
@@ -19,7 +19,7 @@ export class DataContext {
   }
 
   getBooksByGenre(genre) {
-    if(!!this.books.length) {
+    if(this.books.length > 0) {
       // filter cached array by genre & return
       let filteredArray = this.books.filter(book => {
         return book.genre.toLowerCase() === genre.toLowerCase();
