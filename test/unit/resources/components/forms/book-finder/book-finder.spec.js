@@ -34,5 +34,5 @@ describe('BookFinder', () => {
       it('should not request for a filtered list of books');
       it('should not change the current list of filtered books');
     });
-  })
+  });
 });
