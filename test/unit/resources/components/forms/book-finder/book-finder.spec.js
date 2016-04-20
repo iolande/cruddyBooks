@@ -1,7 +1,7 @@
 import { TemplatingEngine, Container } from 'aurelia-framework';
 import { BookFinder } from '../../../../../../src/resources/components/forms/book-finder/book-finder';
 
-fdescribe('BookFinder', () => {
+describe('BookFinder', () => {
   let container;
   let templateEngine;
   let bookFinder;
