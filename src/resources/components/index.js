@@ -4,6 +4,7 @@ export function configure(aurelia) {
   aurelia.globalResources('./forms/search-input/search-input');
   aurelia.globalResources('./forms/text-input/text-input');
 
+  aurelia.globalResources('./contrived-book-finder/contrived-book-finder');
   aurelia.globalResources('./navigation-bar/navigation-bar');
 
   aurelia.globalResources('./panel/panel');

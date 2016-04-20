@@ -51,18 +51,6 @@ describe('Books', () => {
     it('should handle errors returned from the call to the dataContext');
   });
 
-  describe('selectBook', () => {
-    it('should set the selectedBook on the viewmodel', () => {
-      const selectedBookBeforeTest = JSON.parse(JSON.stringify(sut.selectedBook));
-      const bookForSelection = { title: 'Select book', genre: 'Science' };
-
-      sut.selectBook(bookForSelection);
-
-      expect(sut.selectedBook).not.toEqual(selectedBookBeforeTest);
-      expect(sut.selectedBook).toEqual(bookForSelection);
-    });
-  });
-
   describe('addBook', () => {
     it('should save input the book to the dataContext', () => {
       const bookForAddition = { title: 'Additional book', genre: 'Etymology' };

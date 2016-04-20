@@ -1,27 +1,3 @@
 <template>
-  <section class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Add or update a book</h3>
-    </div>
-    <div class="panel-body">
-      <book-finder></book-finder>
-      <form>
-        <fieldset>
-          <legend>Book details</legend>
-          <text-input label="Title" maxlength="50" value.bind="selectedBook.title"></text-input>
-          <text-input label="Author" maxlength="50" value.bind="selectedBook.author"></text-input>
-          <text-input label="Genre" maxlength="50" value.bind="selectedBook.genre" placeholder="science fiction, biography..."></text-input>
-
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked.bind="selectedBook.read"> Read
-            </label>
-          </div>
-        </fieldset>
-      </form>
-    </div>
-    <div class="panel-footer clearfix">
-      <button class="btn btn-primary pull-right" click.trigger="saveAll()">Save all</button>
-    </div>
-  </section>
+  <contrived-book-finder heading="Current book"></contrived-book-finder>
 </template>
