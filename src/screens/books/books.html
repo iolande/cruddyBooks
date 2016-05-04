@@ -3,5 +3,8 @@
   <div class="row">
     <compose view="./childViews/bookForm.html" class="col-md-6 col-xs-6"></compose>
     <compose view="./childViews/bookList.html" class="col-md-6 col-xs-6"></compose>
+    <div class="clearfix">
+      <button class="btn btn-primary pull-right" click.trigger="saveCurrentBook()">Save current book</button>
+    </div>
   </div>
 </template>
