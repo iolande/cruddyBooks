@@ -15,26 +15,22 @@
       </form>
       <ul class="list-unstyled">
         <li repeat.for="book of booksFilteredByGenre">
-          <button type="button" click.delegate="selectBook(book)" class="btn btn-link">${book.title}</button>
+          <button type="button" click.delegate="setWorkingBook(book)" class="btn btn-link">${book.title}</button>
         </li>
       </ul>
       <form>
         <fieldset>
           <legend>Book details</legend>
-          <text-input label="Title" maxlength="50" value.bind="selectedBook.title"></text-input>
-          <text-input label="Author" maxlength="50" value.bind="selectedBook.author"></text-input>
-          <text-input label="Genre" maxlength="50" value.bind="selectedBook.genre" placeholder="science fiction, biography..."></text-input>
+          <text-input label="Title" maxlength="50" value.bind="workingBook.title"></text-input>
+          <text-input label="Author" maxlength="50" value.bind="workingBook.author"></text-input>
+          <text-input label="Genre" maxlength="50" value.bind="workingBook.genre" placeholder="science fiction, biography..."></text-input>
 
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked.bind="selectedBook.read"> Read
-            </label>
-          </div>
+          <checkbox label="Read" value.two-way="workingBook.read"></checkbox>
         </fieldset>
       </form>
     </div>
     <div class="panel-footer clearfix">
-      <button class="btn btn-primary pull-right" click.delegate="saveAll()">Select book for saving</button>
+      <button class="btn btn-primary pull-right" click.delegate="selectBook()">Select book for saving</button>
     </div>
   </section>
 </template>

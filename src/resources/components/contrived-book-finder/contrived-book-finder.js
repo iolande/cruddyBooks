@@ -1,7 +1,8 @@
 import {inject, bindable} from 'aurelia-framework';
 import {DataContext} from '../../../services/dataContext';
+import {Book as WorkingBook} from '../../../models/book';
 
-@inject(DataContext)
+@inject(DataContext, WorkingBook)
 export class ContrivedBookFinder {
   @bindable selectedBook;
   @bindable heading;
@@ -14,12 +15,17 @@ export class ContrivedBookFinder {
     read: false
   };
 
-  constructor(dataContext) {
+  constructor(dataContext, workingBook) {
     this.dataContext = dataContext;
+    this.workingBook = workingBook;
   }
 
-  selectBook(book) {
-    this.selectedBook = book;
+  setWorkingBook(book) {
+    this.workingBook.update(book);
+  }
+
+  selectBook() {
+    this.selectedBook.update(this.workingBook);
   }
 
   searchByGenre() {
