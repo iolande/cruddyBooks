@@ -3,9 +3,10 @@ import {createUniqueID} from '../../../helpers';
 
 export class SearchInput {
   @bindable label = '';
-  @bindable value = '';
+  @bindable value = null;
   @bindable placeholder = '';
   @bindable buttonText = '';
+  @bindable fieldMessageInfo = {};
 
   id = createUniqueID();
 }

@@ -7,6 +7,7 @@ export class ContrivedBookFinder {
   @bindable selectedBook;
   @bindable heading;
 
+  searchTermFieldMessage = {};
   booksFilteredByGenre = null;
   workingBook = {
     title: null,
@@ -29,6 +30,11 @@ export class ContrivedBookFinder {
   }
 
   searchByGenre() {
+    if (!this.searchTerm) {
+      this.searchTermFieldMessage = { message: 'You must enter a search term', level: 'error' };
+      return;
+    }
+
     return this.dataContext.getBooksByGenre(this.searchTerm)
       .then(response => this.booksFilteredByGenre = response);
   }

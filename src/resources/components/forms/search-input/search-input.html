@@ -1,6 +1,8 @@
-<template class="form-group">
+<template class="form-group has-${fieldMessageInfo.level ? fieldMessageInfo.level : ''} ">
   <require from="./search-input.css"></require>
+
   <label for="${id}">${label}</label>
+  <field-message message.bind="fieldMessageInfo.message"></field-message>
   <div class="input-group">
     <input type="search" class="form-control" placeholder="${placeholder}" value.bind="value | nullToEmptyString" id="${id}">
     <span class="input-group-btn">

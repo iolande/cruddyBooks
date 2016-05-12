@@ -1,6 +1,9 @@
 field-message {
   display: block;
-  background: #ccc;
   margin: 5px 0;
   padding: 5px;
+
+  .has-error & {
+    color: #a94442;
+  }
 }
