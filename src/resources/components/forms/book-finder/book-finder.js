@@ -3,7 +3,7 @@ import {DataContext} from '../../../../services/dataContext';
 
 @inject(DataContext)
 export class BookFinder {
-  searchTerm = '';
+  searchTerm = null;
   booksFilteredByGenre = [];
 
   constructor(dataContext) {

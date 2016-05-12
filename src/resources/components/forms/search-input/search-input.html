@@ -2,7 +2,7 @@
   <require from="./search-input.css"></require>
   <label for="${id}">${label}</label>
   <div class="input-group">
-    <input type="search" class="form-control" placeholder="${placeholder}" value.bind="value" id="${id}">
+    <input type="search" class="form-control" placeholder="${placeholder}" value.bind="value | nullToEmptyString" id="${id}">
     <span class="input-group-btn">
       <button class="btn btn-default">${buttonText}</button>
     </span>

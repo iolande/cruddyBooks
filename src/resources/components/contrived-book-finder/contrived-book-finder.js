@@ -9,9 +9,9 @@ export class ContrivedBookFinder {
 
   booksFilteredByGenre = null;
   workingBook = {
-    title: '',
-    author: '',
-    genre: '',
+    title: null,
+    author: null,
+    genre: null,
     read: false
   };
 
