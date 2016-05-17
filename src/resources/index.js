@@ -14,4 +14,5 @@ export function configure(aurelia) {
   aurelia.globalResources('./components/panel/panel-footer');
 
   aurelia.globalResources('./converters/null-to-empty-string');
+  aurelia.globalResources('./converters/three-field-date');
 }
