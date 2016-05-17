@@ -24,6 +24,7 @@ System.config({
     "bootstrap-sass": "github:twbs/bootstrap-sass@3.3.6",
     "fetch": "github:github/fetch@0.11.0",
     "font-awesome": "npm:font-awesome@4.6.1",
+    "moment": "npm:moment@2.13.0",
     "text": "github:systemjs/plugin-text@0.0.3",
     "npm:aurelia-animator-css@1.0.0-beta.1.2.0": {
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.0",
