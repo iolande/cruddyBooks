@@ -4,6 +4,7 @@ export function configure(aurelia) {
   aurelia.globalResources('./components/forms/field-message/field-message');
   aurelia.globalResources('./components/forms/search-input/search-input');
   aurelia.globalResources('./components/forms/text-input/text-input');
+  aurelia.globalResources('./components/forms/three-field-date-input');
 
   aurelia.globalResources('./components/contrived-book-finder/contrived-book-finder');
   aurelia.globalResources('./components/navigation-bar/navigation-bar');

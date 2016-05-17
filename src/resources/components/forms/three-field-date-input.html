@@ -1,0 +1,21 @@
+<template class="form-group has-${fieldMessageInfo.level ? fieldMessageInfo.level : ''} ">
+  <require from="./three-field-date-input.css"></require>
+
+  <fieldset>
+    <legend>${legend}</legend>
+    <div class="row">
+      <div class="form-group col-xs-4">
+        <label for="${dayId}">Day</label>
+        <input type="number" class="form-control" value.bind="value | threeFieldDate:'day'" id="${dayId}" maxlength="2">
+      </div>
+      <div class="form-group col-xs-4">
+        <label for="${monthId}">Month</label>
+        <input type="number" class="form-control" value.bind="value | threeFieldDate:'month'" id="${monthId}" maxlength="2">
+      </div>
+      <div class="form-group col-xs-4">
+        <label for="${yearId}">Year</label>
+        <input type="number" class="form-control" value.bind="value | threeFieldDate:'year'" id="${yearId}" maxlength="4">
+      </div>
+    </div>
+  </fieldset>
+</template>
