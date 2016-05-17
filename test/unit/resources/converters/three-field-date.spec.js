@@ -99,17 +99,17 @@ describe('ThreeFieldDateValueConverter', () => {
 
         let result = sut.fromView(inputDate);
 
-        expect(result).toEqual('1971-08-09');
+        expect(result).toEqual('1971-8-9');
       });
     });
 
     describe('invalid input date', () => {
-      it('should return null (abcd)', () => {
-        let inputDate = 'abcd';
+      it('should return a formatted string from the dateParts ({ day: "aa", month: "bb", year: "cccc" })', () => {
+        let inputDate = { day: 'aa', month: 'bb', year: 'cccc' };
 
         let result = sut.fromView(inputDate);
 
-        expect(result).toBeNull();
+        expect(result).toEqual('cccc-bb-aa');
       });
     });
   });

@@ -12,12 +12,8 @@ export class ThreeFieldDateValueConverter {
   }
 
   fromView(dateObject) {
-    let tmpDate = moment(new Date(`${dateObject.year}-${dateObject.month}-${dateObject.day}`));
-
-    if (tmpDate.isValid()) {
-      return tmpDate.format('YYYY-MM-DD');
-    } else {
-      return null;
-    }
+    // Need to bind this within number fields so have to allow invalid dates
+    // or the usability will be poor as the user changes one field at a time
+    return `${dateObject.year}-${dateObject.month}-${dateObject.day}`;
   }
 }
