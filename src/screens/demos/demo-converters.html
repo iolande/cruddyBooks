@@ -5,6 +5,14 @@
   <panel panel-type="info">
     <panel-heading heading="Date converters"></panel-heading>
     <panel-body>
+      <three-field-date-input
+        legend="Date of birth"
+        value.bind="dateOfBirth"
+        field-message-info.bind="dobMessage"
+      ></three-field-date-input>
     </panel-body>
+    <panel-footer>
+      <button class="btn btn-primary" click.delegate="validateDob()">Validate</button>
+    </panel-footer>
   </panel>
 </template>
