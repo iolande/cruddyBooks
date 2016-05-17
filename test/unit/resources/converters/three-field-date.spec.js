@@ -42,4 +42,44 @@ describe('ThreeFieldDateValueConverter', () => {
       });
     });
   });
+
+  describe('fromView', () => {
+    let sut;
+
+    beforeEach(() => {
+      sut = new ThreeFieldDateValueConverter();
+    });
+
+    afterEach(() => {
+      sut = null;
+    });
+
+    describe('valid input date', () => {
+      it('should return an ISO8601 formatted date from the parts { day: 31, month: 12, year: 1970 }', () => {
+        let inputDate = { day: 31, month: 12, year: 1970 };
+
+        let result = sut.fromView(inputDate);
+
+        expect(result).toEqual('1970-12-31');
+      });
+
+      it('should return an ISO8601 formatted date from the parts { day: 9, month: 8, year: 1971 }', () => {
+        let inputDate = { day: 9, month: 8, year: 1971 };
+
+        let result = sut.fromView(inputDate);
+
+        expect(result).toEqual('1971-08-09');
+      });
+    });
+
+    describe('invalid input date', () => {
+      it('should return null (abcd)', () => {
+        let inputDate = 'abcd';
+
+        let result = sut.fromView(inputDate);
+
+        expect(result).toBeNull();
+      });
+    });
+  });
 });
