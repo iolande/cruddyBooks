@@ -14,20 +14,51 @@ describe('ThreeFieldDateValueConverter', () => {
     });
 
     describe('valid input date', () => {
-      it('should return an object containing day, month and year properties (1970-12-31)', () => {
-        let inputDate = '1970-12-31';
+      describe('without requiring a specified datePart', () => {
+        it('should return an object containing day, month and year properties (1970-12-31)', () => {
+          let inputDate = '1970-12-31';
 
-        let result = sut.toView(inputDate);
+          let result = sut.toView(inputDate);
 
-        expect(result).toEqual({ day: 31, month: 12, year: 1970 });
+          expect(result).toEqual({ day: 31, month: 12, year: 1970 });
+        });
+
+        it('should return an object containing day, month and year properties (1971-08-09)', () => {
+          let inputDate = '1971-08-09';
+
+          let result = sut.toView(inputDate);
+
+          expect(result).toEqual({ day: 9, month: 8, year: 1971 });
+        });
       });
 
-      it('should return an object containing day, month and year properties (1971-08-09)', () => {
-        let inputDate = '1971-08-09';
+      describe('when requiring a specific datePart (1970-12-31)', () => {
+        let result;
+        let inputDate;
 
-        let result = sut.toView(inputDate);
+        beforeEach(() => {
+          inputDate = '1970-12-31';
+        });
 
-        expect(result).toEqual({ day: 9, month: 8, year: 1971 });
+        afterEach(() => {
+          result = null;
+          inputDate = null;
+        });
+
+        it('should return only the datePart specified (day)', () => {
+          result = sut.toView(inputDate, 'day');
+          expect(result).toEqual(31);
+        });
+
+        it('should return only the datePart specified (month)', () => {
+          result = sut.toView(inputDate, 'month');
+          expect(result).toEqual(12);
+        });
+
+        it('should return only the datePart specified (year)', () => {
+          result = sut.toView(inputDate, 'year');
+          expect(result).toEqual(1970);
+        });
       });
     });
 
