@@ -9,4 +9,8 @@ export class SearchInput {
   @bindable fieldMessageInfo = {};
 
   id = createUniqueID();
+
+  valueChanged() {
+    this.fieldMessageInfo = {};
+  }
 }
